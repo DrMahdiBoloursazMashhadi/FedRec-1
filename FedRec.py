@@ -64,10 +64,10 @@ def usergen(x, y):
         
     h = np.random.rayleigh(scale=sigma, size=(x.shape[0],1))
     hIQ=np.concatenate((h,h),axis=1)
-    x_U = np.multiply(hIQ,x)+ np.random.normal(0 , np.sqrt(N0)/2 , x.shape) # Channel-distorted noisy features
-    y_U = y # Labels
-    D_U = tf.data.Dataset.from_tensor_slices((list(x_U),list(y_U.astype(int))))
-    return D_U
+    x_u = np.multiply(hIQ,x)+ np.random.normal(0 , np.sqrt(N0)/2 , x.shape) # Channel-distorted noisy features
+    y_u = y # Labels
+    D_u = tf.data.Dataset.from_tensor_slices((list(x_u),list(y_u.astype(int))))
+    return D_u
 
 
 def testgen(x, y):
@@ -155,9 +155,10 @@ for i in range(MC):
     
 print('##############################')
 print('16QAM at Eb/N0=', EbN0_dB, 'dB')
+print('FedRec trained collaboratively by ', U, 'users')
 if iid==True:
         iidstr = 'iid' 
 else:
         iidstr = 'non-iid'
-print(iidstr, 'Rayleigh fading')
-print('BER of FedRec: ', BER)
+print(iidstr, ' Rayleigh fading')
+print('BER= ', BER)
