@@ -14,7 +14,7 @@ import tensorflow_federated as tff
 
 os.environ["CUDA_VISIBLE_DEVICES"] = "0"
 
-MC = 5 # Number of Monte Carlo trials
+MC = 10 # Number of Monte Carlo trials
 iid = False # set to False to simulate non-iid user fading 
 
 ### Modulation Parameters
